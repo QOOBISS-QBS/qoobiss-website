@@ -1,11 +1,25 @@
 import { defineQuery } from "next-sanity";
 
-export const POSTS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)][0...12]{
-  _id, title, slug
+export const NAVBAR_QUERY = defineQuery(`*[_type == "navbar"][0]{
+  logo{
+    asset->{url},
+    alt
+  },
+  navLinks[]{
+    title,
+    url
+  },
+  button{
+    title,
+    url,
+    variant,
+    size
+  }
 }`);
 
-export const POST_QUERY =
-  defineQuery(`*[_type == "post" && slug.current == $slug][0]{
-  title, body, mainImage
+export const HEADER_QUERY = defineQuery(`*[_type == "header"][0]{
+  headingFirstPart,
+  coloredHeading,
+  headingLastPart,
+  description
 }`);
