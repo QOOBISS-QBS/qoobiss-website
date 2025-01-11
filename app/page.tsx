@@ -1,21 +1,21 @@
-import { Header } from "@/components/header";
 import { Navbar } from "@/components/navbar";
 import { sanityFetch } from "@/sanity/lib/client";
-import { NAVBAR_QUERY, HEADER_QUERY } from "@/sanity/lib/queries";
+import { NAVBAR_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const navbar = await sanityFetch({
+  const navbarData = await sanityFetch({
     query: NAVBAR_QUERY,
   });
 
-  const header = await sanityFetch({
-    query: HEADER_QUERY,
-  });
+  // Simple validation before rendering
+  if (!navbarData || !navbarData.logo || !navbarData.button) {
+    console.error("Invalid navbar data received from Sanity");
+    return null;
+  }
 
   return (
     <main>
-      <Navbar {...navbar} />
-      <Header {...header} />
+      <Navbar {...navbarData} />
     </main>
   );
 }

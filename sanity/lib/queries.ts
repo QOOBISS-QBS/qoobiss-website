@@ -5,21 +5,16 @@ export const NAVBAR_QUERY = defineQuery(`*[_type == "navbar"][0]{
     asset->{url},
     alt
   },
-  navLinks[]{
+  navigationItems[]{
     title,
-    url
+    href,
+    links[]{
+      title,
+      href
+    }
   },
   button{
     title,
-    url,
-    variant,
-    size
+    href
   }
-}`);
-
-export const HEADER_QUERY = defineQuery(`*[_type == "header"][0]{
-  headingFirstPart,
-  coloredHeading,
-  headingLastPart,
-  description
 }`);
