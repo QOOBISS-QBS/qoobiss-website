@@ -1,8 +1,17 @@
 // schemaTypes/index.ts
 import { type SchemaTypeDefinition } from "sanity";
-import { blockContentType } from "./blockContentType";
 import { navbarType } from "./navbarType";
+import { headerType } from "./headerType";
+import { whyQoobissType } from "./whyQoobiss";
+import { darkFeatureType } from "./dark-feature";
+import { lightFeatureType } from "./light-feature";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, navbarType],
+  types: [
+    navbarType,
+    headerType,
+    whyQoobissType,
+    darkFeatureType,
+    lightFeatureType,
+  ],
 };
