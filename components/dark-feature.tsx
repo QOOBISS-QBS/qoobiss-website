@@ -1,35 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Button, type ButtonProps } from "@/components/ui/button";
+import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button";
 import AnimateHeading, { StaggeredHeading } from "./ui/word-curtain";
 import Link from "next/link";
-import LottieAnimation from "@/components/lottie-animation";
 import seamlessAnimation from "@/animation-data/seamless.json";
 import scalabilityAnimation from "@/animation-data/scalability.json";
 import workflowAnimation from "@/animation-data/automation.json";
 import universalAnimation from "@/animation-data/universal.json";
 import {
-  DarkFeatureData,
-  Feature,
+  type DarkFeatureData,
   sanitizeDarkFeatureData,
 } from "@/types/dark-feature";
 
-type ImageProps = {
-  src: string;
-  alt?: string;
-};
+// Dynamically import LottieAnimation with SSR disabled
+const LottieAnimation = dynamic(() => import("./helpers/lottie-animation"), {
+  ssr: false,
+});
 
-type Props = {
-  heading: string;
-  description: string;
-  button: ButtonProps;
-  features: Feature[];
-  image: ImageProps;
-};
+// Hardcoded animations mapping
+const SECTION_ANIMATIONS = [
+  seamlessAnimation,
+  scalabilityAnimation,
+  workflowAnimation,
+  universalAnimation,
+];
 
 export type DarkFeatureProps = React.ComponentPropsWithoutRef<"section"> &
-  Partial<Props>;
+  Partial<DarkFeatureData>;
 
 export const DarkFeature = (props: DarkFeatureProps) => {
   // Sanitize the incoming data
@@ -46,13 +45,6 @@ export const DarkFeature = (props: DarkFeatureProps) => {
   }
 
   const { heading, description, button, features } = sanitizedData;
-
-  const iconMap: Record<string, any> = {
-    seamless: seamlessAnimation,
-    scalability: scalabilityAnimation,
-    workflow: workflowAnimation,
-    universal: universalAnimation,
-  };
 
   return (
     <section className="pt-6 pb-20 lg:pt-24 lg:pb-20 bg-dark-background relative">
@@ -79,8 +71,8 @@ export const DarkFeature = (props: DarkFeatureProps) => {
               >
                 <div className="mb-8 relative w-24 h-24">
                   <LottieAnimation
-                    animationData={iconMap[feature.icon]}
-                    width="96px"
+                    animationData={SECTION_ANIMATIONS[index]}
+                    width={index === 0 ? "164px" : "96px"}
                     height="96px"
                     loop={false}
                   />
@@ -107,25 +99,21 @@ export const DarkFeatureDefaults: DarkFeatureData = {
   button: { title: "Discover new solutions ", variant: "dark-default" },
   features: [
     {
-      icon: "seamless",
       heading: "Seamless integration",
       description:
         "Quickly integrate with existing systems, ensuring smooth and efficient adoption. Our solutions fit effortlessly into your technology landscape, minimizing disruption and accelerating deployment.",
     },
     {
-      icon: "scalability",
       heading: "Easy scalability",
       description:
         "Expand your operations to accommodate growing demands without complexity. Our digital tools  support your growth ambitions, accommodating increased volumes and new business opportunities with ease.",
     },
     {
-      icon: "workflow",
       heading: "Workflow automation",
       description:
         "Streamline various business processes, reducing manual effort and increasing efficiency. Automate tasks from customer onboarding to financial operations, freeing up resources to focus on strategic initiatives",
     },
     {
-      icon: "universal",
       heading: "Universal business fit",
       description:
         "Designed to adapt seamlessly across any industry or country, ensuring a perfect fit. Qoobiss solutions are crafted to meet the unique challenges and requirements of your business, regardless of your operational environment.",

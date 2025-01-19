@@ -3,7 +3,7 @@
 "use client";
 import clsx from "clsx";
 import { StaggeredHeading } from "./ui/word-curtain";
-import { SplineWrapper } from "./spline-wrapper";
+import { SplineWrapper } from "./helpers/spline-wrapper";
 import { HeaderData, sanitizeHeaderData } from "@/types/header";
 
 export type HeaderProps = React.ComponentPropsWithoutRef<"section"> &

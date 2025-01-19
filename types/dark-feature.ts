@@ -1,7 +1,6 @@
 import { ButtonProps } from "@/components/ui/button";
 
 export interface Feature {
-  icon: string;
   heading: string;
   description: string;
 }
@@ -34,7 +33,6 @@ export function isFeature(feature: unknown): feature is Feature {
 
   const candidate = feature as Feature;
   return (
-    typeof candidate.icon === "string" &&
     typeof candidate.heading === "string" &&
     typeof candidate.description === "string"
   );
@@ -58,7 +56,6 @@ export function sanitizeFeature(feature: unknown): Feature | null {
   if (!isFeature(feature)) return null;
 
   return {
-    icon: feature.icon,
     heading: feature.heading,
     description: feature.description,
   };

@@ -15,7 +15,7 @@ import {
 } from "@/types/light-feature";
 
 // Dynamically import LottieAnimation with SSR disabled
-const LottieAnimation = dynamic(() => import("./lottie-animation"), {
+const LottieAnimation = dynamic(() => import("./helpers/lottie-animation"), {
   ssr: false,
 });
 

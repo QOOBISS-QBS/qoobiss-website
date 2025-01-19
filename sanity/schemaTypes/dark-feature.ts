@@ -47,19 +47,6 @@ export const darkFeatureType = defineType({
           type: "object",
           fields: [
             {
-              name: "icon",
-              title: "Icon",
-              type: "string",
-              options: {
-                list: [
-                  { title: "Seamless", value: "seamless" },
-                  { title: "Scalability", value: "scalability" },
-                  { title: "Workflow", value: "workflow" },
-                  { title: "Universal", value: "universal" },
-                ],
-              },
-            },
-            {
               name: "heading",
               title: "Heading",
               type: "string",
