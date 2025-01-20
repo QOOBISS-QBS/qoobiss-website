@@ -60,3 +60,56 @@ export const LIGHT_FEATURE_QUERY = defineQuery(`*[_type == "lightFeature"][0]{
     description
   }
 }`);
+
+export const FAQ_QUERY = defineQuery(`*[_type == "faq"][0]{
+  tagline,
+  heading,
+  button{
+    title,
+    variant
+  },
+  buttonMobile{
+    title,
+    variant
+  },
+  questions[]{
+    title,
+    answer
+  }
+}`);
+
+export const FOOTER_QUERY = defineQuery(`*[_type == "footer"][0]{
+  contents[]{
+    title,
+    links[]{
+      url,
+      subTitle
+    }
+  },
+  officeAddress,
+  contactInfo{
+    email
+  },
+  socialLinks[]{
+    platform,
+    url
+  },
+  logo{
+    asset->{url},
+    alt
+  },
+  mainHeadingText,
+  copyrightText,
+  termsUrl{
+    url,
+    title
+  },
+  privacyUrl{
+    url,
+    title
+  },
+  cookiesUrl{
+    url,
+    title
+  }
+}`);

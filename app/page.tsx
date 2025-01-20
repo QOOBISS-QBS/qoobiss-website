@@ -1,29 +1,32 @@
 // app/page.tsx
-import { Navbar } from "@/components/navbar";
 import { Header } from "@/components/header";
 import { sanityFetch } from "@/sanity/lib/client";
 import {
   DARK_FEATURE_QUERY,
   HEADER_QUERY,
   LIGHT_FEATURE_QUERY,
-  NAVBAR_QUERY,
   WHY_QOOBISS_QUERY,
+  FAQ_QUERY,
+  FOOTER_QUERY,
+  NAVBAR_QUERY,
 } from "@/sanity/lib/queries";
 import { WhyQoobiss } from "@/components/why-qoobiss";
 import { DarkFeature } from "@/components/dark-feature";
 import { LightFeature } from "@/components/light-feature";
+import { Faq } from "@/components/faq";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export default async function Home() {
   const [
-    navbarData,
     headerData,
     whyQoobissData,
     darkFeatureData,
     lightFeatureData,
+    faqData,
+    navbarData,
+    footerData,
   ] = await Promise.all([
-    sanityFetch({
-      query: NAVBAR_QUERY,
-    }),
     sanityFetch({
       query: HEADER_QUERY,
     }),
@@ -36,6 +39,15 @@ export default async function Home() {
     sanityFetch({
       query: LIGHT_FEATURE_QUERY,
     }),
+    sanityFetch({
+      query: FAQ_QUERY,
+    }),
+    sanityFetch({
+      query: NAVBAR_QUERY,
+    }),
+    sanityFetch({
+      query: FOOTER_QUERY,
+    }),
   ]);
 
   return (
@@ -45,6 +57,8 @@ export default async function Home() {
       <WhyQoobiss {...whyQoobissData} />
       <DarkFeature {...darkFeatureData} />
       <LightFeature {...lightFeatureData} />
+      <Faq {...faqData} />
+      <Footer {...footerData} />
     </main>
   );
 }

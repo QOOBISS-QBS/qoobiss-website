@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Sora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
+
+// import { sanityFetch } from "@/sanity/lib/client";
+// import Navbar from "@/components/navbar";
+// import { NAVBAR_QUERY } from "@/sanity/lib/queries";
+// import { Footer } from "@/components/footer";
+// import { FOOTER_QUERY } from "@/sanity/lib/queries";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -13,7 +20,10 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: "Qoobiss",
-  description: "",
+  description: "Digital transformation accessible to everyone",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({
@@ -21,23 +31,40 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const navbarData = await sanityFetch({
+  //   query: NAVBAR_QUERY,
+  // });
+  // const footerData = await sanityFetch({
+  //   query: FOOTER_QUERY,
+  // });
+
+  const isDraftMode = await draftMode();
   return (
     <html lang="en">
       <body
         className={cn("font-sans antialiased", sora.className, sora.variable)}
       >
-        {(await draftMode()).isEnabled && (
+        <Script
+          id="vtag-ai-js"
+          src="https://r2.leadsy.ai/tag.js"
+          strategy="afterInteractive"
+          data-pid="11TQFqXWgKbk0tsqF"
+          data-version="062024"
+        />
+        {/* {isDraftMode.isEnabled && (
           <Button asChild variant="indigo" size="primary">
             <a
-              className="fixed right-0 bottom-0 m-4"
+              className="fixed left-0 top-0 m-4 z-[999]"
               href="/api/draft-mode/disable"
             >
               Disable preview mode
             </a>
           </Button>
-        )}
-        {children}
-        {(await draftMode()).isEnabled && <VisualEditing />}
+        )} */}
+        <main>{children}</main>
+        {isDraftMode.isEnabled && <VisualEditing />}
+        {/* <Navbar {...navbarData} /> */}
+        {/* <Footer {...footerData} /> */}
       </body>
     </html>
   );

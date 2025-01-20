@@ -5,6 +5,8 @@ import { headerType } from "./headerType";
 import { whyQoobissType } from "./whyQoobiss";
 import { darkFeatureType } from "./dark-feature";
 import { lightFeatureType } from "./light-feature";
+import { faqType } from "./faq";
+import { footerType } from "./footerType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -13,5 +15,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     whyQoobissType,
     darkFeatureType,
     lightFeatureType,
+    faqType,
+    footerType,
   ],
 };

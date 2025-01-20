@@ -1,59 +1,48 @@
 @tailwind base;
-@tailwind components;
+@tailwind components; 
 @tailwind utilities;
-
+ 
 @layer base {
   :root {
-    --dark-indigo: #11092b;
-    --accent: #b9e368;
-    --electric-violet: #884bef;
+    --dark-indigo: #11092B;
+    --accent: #B9E368;
+    --electric-violet: #884BEF;
 
-    --light-background: #ececec;
-    --light-foreground: #11092b;
-    --light-border: #11092b;
-    --light-chapeau: #433d56;
+    --light-background: #ECECEC;
+    --light-foreground: #11092B;
+    --light-border: #11092B;
+    --light-chapeau: #433D56;
 
-    --dark-background: #0a081f;
-    --dark-foreground: #e6e5ea;
-    --dark-border: #e6e5ea;
-    --dark-chapeau: #958eaa;
-    --dark-stroke: #5c49a63b;
+    --dark-background: #0A081F;
+    --dark-foreground: #E6E5EA;
+    --dark-border: #E6E5EA;
+    --dark-chapeau: #958EAA;
+    --dark-stroke: #5C49A63B;
 
     --container-padding: 5%;
   }
 }
-
+ 
 @layer base {
-  html {
-    font-family: var(--font-sans);
-  }
-
   body {
     @apply bg-light-background text-light-foreground;
   }
 
   .custom-gradient {
-    background: linear-gradient(
-      218deg,
-      rgba(178, 157, 223, 0.09) -56.73%,
-      rgba(243, 238, 252, 0.03) 78.26%
-    );
+    background: linear-gradient(218deg, rgba(178, 157, 223, 0.09) -56.73%, rgba(243, 238, 252, 0.03) 78.26%);
   }
 
   .text-gradient {
-    background: linear-gradient(263deg, #d4d3d9 -35.77%, #e5e4e8 113.86%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+   @apply bg-gradient-to-r from-[#D4D3D9] to-[#E5E4E8] bg-clip-text text-transparent
   }
 
+
   .container-padding {
-    @apply px-[5%] lg:px-0;
+    @apply px-[5%] lg:px-0
   }
 
   .bg-glassy {
-    border-radius: 85px;
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.4);
-    background: linear-gradient(180deg, #8460e9 0%, #541eac 100%);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.40) inset;
+    background: linear-gradient(180deg, #8460E9 0%, #541EAC 100%);
   }
 }

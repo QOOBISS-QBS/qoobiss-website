@@ -16,7 +16,15 @@ export const AnimateHeading = ({
   duration,
   threshold = 0.2, // How much of the element needs to be in view
   once = true, // Whether to animate only once or every time it comes into view
-}: any) => {
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down";
+  duration?: number;
+  threshold?: number;
+  once?: boolean;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     amount: threshold,
@@ -64,7 +72,15 @@ export const StaggeredHeading = ({
   staggerChildren = 0.1,
   threshold = 0.2,
   once = true,
-}: any) => {
+}: {
+  children: React.ReactNode;
+  className?: string;
+  wordClassName?: string;
+  baseDelay?: number;
+  staggerChildren?: number;
+  threshold?: number;
+  once?: boolean;
+}) => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, {
     amount: threshold,
