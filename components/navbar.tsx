@@ -170,6 +170,21 @@ const MobileNav = ({
 export const Navbar = ({ logo, navigationItems = [], button }: NavbarProps) => {
   const [open, setOpen] = useState(false);
 
+  const defaultLogo: NavbarProps["logo"] = {
+    asset: {
+      url: "/qoobiss.svg",
+    },
+    alt: "Company logo",
+  };
+
+  const defaultButton: NavbarProps["button"] = {
+    title: "Get in touch",
+    href: "/contact",
+  };
+
+  const safeLogoData = logo?.asset?.url ? logo : defaultLogo;
+  const safeButtonData = button?.href ? button : defaultButton;
+
   // Sanitize navigation items
   const sanitizedItems = (navigationItems || [])
     .map(sanitizeNavigationItem)
@@ -181,8 +196,8 @@ export const Navbar = ({ logo, navigationItems = [], button }: NavbarProps) => {
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center">
             <Image
-              src={logo.asset.url}
-              alt={logo.alt}
+              src={safeLogoData.asset.url}
+              alt={safeLogoData.alt}
               height={125}
               width={125}
             />
@@ -194,21 +209,21 @@ export const Navbar = ({ logo, navigationItems = [], button }: NavbarProps) => {
               className="bg-white/25 h-8 mx-4 hidden lg:block"
               orientation="vertical"
             />
-            <Link href={button.href}>
+            <Link href={safeButtonData.href}>
               <Button
                 variant="primary-dark"
                 size="primary"
                 className="hidden lg:block"
               >
-                {button.title}
+                {safeButtonData.title}
               </Button>
             </Link>
             <MobileNav
               open={open}
               onOpenChange={setOpen}
-              logo={logo}
+              logo={safeLogoData}
               navigationItems={sanitizedItems}
-              button={button}
+              button={safeButtonData}
             />
           </div>
         </div>

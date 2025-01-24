@@ -9,7 +9,7 @@ export type FooterProps = React.ComponentPropsWithoutRef<"section"> &
 
 export const Footer = (props: FooterProps) => {
   // Sanitize the incoming data
-  const sanitizedData = sanitizeFooterData({
+  let sanitizedData = sanitizeFooterData({
     contents: props.contents || FooterDefaults.contents,
     officeAddress: props.officeAddress || FooterDefaults.officeAddress,
     contactInfo: props.contactInfo || FooterDefaults.contactInfo,
@@ -23,8 +23,12 @@ export const Footer = (props: FooterProps) => {
   });
 
   if (!sanitizedData) {
-    console.error("Invalid footer data provided");
-    return null;
+    console.warn("Footer data validation failed, falling back to defaults");
+    sanitizedData = sanitizeFooterData(FooterDefaults);
+    if (!sanitizedData) {
+      console.error("Critical: Default footer data is invalid");
+      return null;
+    }
   }
 
   const {
@@ -131,11 +135,13 @@ export const Footer = (props: FooterProps) => {
         src="/footer-ellipse.png"
         alt="Footer's ellipse"
         className="size-full absolute top-0 -z-10 lg:block hidden pointer-events-none"
+        loading="lazy"
       />
       <img
         src="/footer-ellipse-mobile.png"
         alt="Footer's ellipse"
         className="size-full absolute top-0 -z-10 lg:hidden pointer-events-none"
+        loading="lazy"
       />
     </footer>
   );
@@ -174,7 +180,7 @@ export const FooterDefaults: FooterProps = {
   ],
   logo: {
     asset: { url: "/footer-qoobiss.svg" },
-    alt: "qoobiss logo",
+    alt: "Qoobiss Logo",
   },
   mainHeadingText: "Innovation is bliss.",
   copyrightText: "Copyright © All rights reserved 2024",

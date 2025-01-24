@@ -24,7 +24,7 @@ const defaultNavigationItems = [
 
 const defaultButton = {
   title: "Get in touch",
-  href: "/contact",
+  href: "/partner-with-us",
 };
 
 export const navbarType = defineType({
