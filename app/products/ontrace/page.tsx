@@ -5,18 +5,32 @@ import { DarkFeature } from "@/components/products/ontrace/DarkFeature";
 import { LightFeature } from "@/components/products/ontrace/LightFeature";
 import { DarkFeature2 } from "@/components/products/ontrace/DarkFeature2";
 import { GetInTouch } from "@/components/GetInTouch";
+import { sanityFetch } from "@/sanity/lib/client";
+import {
+  ONTRACE_QUERY,
+  ONTRACE_FEATURES_QUERY,
+} from "@/sanity/lib/queries/ontrace";
 
-export default function Home() {
+export default async function Home() {
+  const [ontraceData, ontraceFeaturesData] = await Promise.all([
+    sanityFetch({
+      query: ONTRACE_QUERY,
+    }),
+    sanityFetch({
+      query: ONTRACE_FEATURES_QUERY,
+    }),
+  ]);
+
   return (
     <main>
-      <Banner />
-      <Hero />
-      <LightFeature />
+      <Banner {...ontraceData.banner} />
+      <Hero {...ontraceData.hero} />
+      <LightFeature {...ontraceFeaturesData.lightFeature} />
       <div className="lg:bg-[url('/q.png')] bg-left bg-cover bg-no-repeat bg-dark-indigo">
-        <OurSolution />
-        <DarkFeature />
+        <OurSolution {...ontraceData.ourSolution} />
+        <DarkFeature {...ontraceFeaturesData.darkFeature} />
       </div>
-      <DarkFeature2 />
+      <DarkFeature2 {...ontraceFeaturesData.darkFeature2} />
       <GetInTouch />
     </main>
   );

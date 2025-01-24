@@ -4,7 +4,7 @@ import { OurSolution } from "@/components/products/origin/OurSolution";
 import { DarkFeature } from "@/components/products/origin/DarkFeature";
 import { LightFeature } from "@/components/products/origin/LightFeature";
 import { DarkFeature2 } from "@/components/products/origin/DarkFeature2";
-// import { GetInTouch } from "@/components/GetInTouch";
+import { GetInTouch } from "@/components/GetInTouch";
 import { sanityFetch } from "@/sanity/lib/client";
 import {
   ORIGIN_QUERY,
@@ -31,7 +31,7 @@ export default async function Home() {
         <DarkFeature {...originFeaturesData.darkFeature} />
       </div>
       <DarkFeature2 {...originFeaturesData.darkFeature2} />
-      {/* <GetInTouch /> */}
+      <GetInTouch />
     </main>
   );
 }

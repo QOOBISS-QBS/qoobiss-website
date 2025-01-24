@@ -1,0 +1,71 @@
+import { defineQuery } from "next-sanity";
+
+export const ONTRACE_QUERY = defineQuery(`*[_type == "ontrace"][0]{
+    banner{
+      title,
+      unColoredHeadingOne,
+      coloredHeading,
+      unColoredHeadingTwo,
+      description,
+      button{
+        title,
+        variant,
+        size
+      }
+    },
+    hero{
+      title,
+      description
+    },
+    ourSolution{
+      heading,
+      descriptionFirstPart,
+      coloredText,
+      descriptionSecondPart
+    }
+  }`);
+
+export const ONTRACE_FEATURES_QUERY =
+  defineQuery(`*[_type == "ontraceFeatures"][0]{
+    darkFeature{
+      heading,
+      description,
+      button{
+        title,
+        variant
+      },
+      features[]{
+        icon{
+          src,
+          alt
+        },
+        heading,
+        description
+      }
+    },
+    darkFeature2{
+      tagline,
+      heading,
+      features[]{
+        icon{
+          src,
+          alt
+        },
+        heading,
+        description
+      }
+    },
+    lightFeature{
+      tagline,
+      heading,
+      description,
+      features[]{
+        image{
+          src,
+          alt
+        },
+        heading,
+        description
+      }
+    }
+  }`);

@@ -5,13 +5,25 @@ import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 
-export type GetInTouchProps = React.ComponentPropsWithoutRef<"section">;
+type Props = {
+  tag: string;
+  whiteText: string;
+  accentText: string;
+};
+
+export type GetInTouchProps = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 export const GetInTouch = (props: GetInTouchProps) => {
-  const {} = {
+  const { tag, whiteText, accentText } = {
     ...GetInTouchDefaults,
     ...props,
-  };
+  } as Props;
+
+  if (!tag || !whiteText || !accentText) {
+    console.error("Required props are missing in GetInTouch component");
+    return null;
+  }
 
   return (
     <section
@@ -29,12 +41,12 @@ export const GetInTouch = (props: GetInTouchProps) => {
           />
           <div className="relative z-10 flex flex-col justify-center items-center lg:justify-normal lg:items-start gap-10 lg:gap-20">
             <p className="text-electric-violet text-base lg:text-xl font-semibold uppercase">
-              Connect with us
+              {tag}
             </p>
             <h2 className="lg:text-[90px] text-8xl lg:w-[50%] text-center lg:text-left lg:font-light">
-              <span className="text-gradient">Book a</span>{" "}
+              <span className="text-gradient">{whiteText}</span>{" "}
               <div className="lg:flex lg:gap-6 lg:items-center">
-                <span className="text-accent">demo</span>
+                <span className="text-accent">{accentText}</span>
                 <div className="flex items-center lg:justify-normal justify-center">
                   <Link
                     className="mt-8 lg:mt-0"
@@ -52,7 +64,11 @@ export const GetInTouch = (props: GetInTouchProps) => {
   );
 };
 
-export const GetInTouchDefaults: GetInTouchProps = {};
+export const GetInTouchDefaults: GetInTouchProps = {
+  tag: "Connect with us",
+  whiteText: "Book a",
+  accentText: "demo",
+};
 
 const CtaIcon = () => {
   return (
