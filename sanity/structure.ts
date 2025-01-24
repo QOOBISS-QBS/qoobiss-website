@@ -64,5 +64,21 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
       S.documentTypeListItem("getInTouch").title("Get In Touch"),
+      S.listItem()
+        .title("About Us")
+        .child(
+          S.list()
+            .title("About Us Sections")
+            .items([
+              S.documentTypeListItem("aboutUsHero").title("Hero Section"),
+              S.documentTypeListItem("aboutUsFeatureOne").title(
+                "Feature One Section"
+              ),
+              S.documentTypeListItem("aboutUsFeatureTwo").title(
+                "Feature Two Section"
+              ),
+              S.documentTypeListItem("aboutUsTeam").title("Team Section"),
+            ])
+        ),
       S.documentTypeListItem("footer").title("Footer"),
     ]);

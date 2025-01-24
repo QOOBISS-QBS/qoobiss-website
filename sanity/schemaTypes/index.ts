@@ -15,6 +15,10 @@ import { ontraceType } from "./products/ontraceType";
 import { ontraceFeaturesType } from "./products/ontraceFeaturesType";
 import { omnicheckType } from "./products/omnicheckType";
 import { omnicheckFeaturesType } from "./products/omnicheckFeaturesType";
+import { heroType } from "./about-us/heroType";
+import { featureOneType } from "./about-us/featureOneType";
+import { featureTwoType } from "./about-us/featureTwoType";
+import { teamType } from "./about-us/teamType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -33,5 +37,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     omnicheckType,
     omnicheckFeaturesType,
     getInTouch,
+    heroType,
+    featureOneType,
+    featureTwoType,
+    teamType,
   ],
 };
