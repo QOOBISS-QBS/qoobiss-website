@@ -8,6 +8,8 @@ import { lightFeatureType } from "./light-feature";
 import { faqType } from "./faq";
 import { footerType } from "./footerType";
 import { productsType } from "./products/productsType";
+import { originType } from "./products/originType";
+import { originFeaturesType } from "./products/originFeaturesType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +21,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     faqType,
     footerType,
     productsType,
+    originType,
+    originFeaturesType,
   ],
 };

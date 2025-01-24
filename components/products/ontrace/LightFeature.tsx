@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import AnimateHeading, { StaggeredHeading } from "@/components/ui/word-curtain";
+import AnimateHeading, {
+  StaggeredHeading,
+} from "@/components/helpers/word-curtain";
 
 type Image = {
   src: string;

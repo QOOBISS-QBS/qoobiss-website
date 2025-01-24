@@ -24,6 +24,20 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.list()
             .title("Products Section")
-            .items([S.documentTypeListItem("products").title("All Products")])
+            .items([
+              S.documentTypeListItem("products").title("All Products"),
+              S.listItem()
+                .title("Origin")
+                .child(
+                  S.list()
+                    .title("Origin Page Sections")
+                    .items([
+                      S.documentTypeListItem("origin").title("Main Content"),
+                      S.documentTypeListItem("originFeatures").title(
+                        "Features"
+                      ),
+                    ])
+                ),
+            ])
         ),
     ]);

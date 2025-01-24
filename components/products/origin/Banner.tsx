@@ -3,7 +3,7 @@
 
 import clsx from "clsx";
 import { Button, type ButtonProps } from "@/components/ui/button";
-import AnimateHeading, { StaggeredHeading } from "@/components/ui/word-curtain";
+import AnimateHeading from "@/components/helpers/word-curtain";
 import Link from "next/link";
 
 type Props = {

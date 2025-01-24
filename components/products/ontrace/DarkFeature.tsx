@@ -2,7 +2,9 @@
 "use client";
 
 import { Button, type ButtonProps } from "@/components/ui/button";
-import AnimateHeading, { StaggeredHeading } from "@/components/ui/word-curtain";
+import AnimateHeading, {
+  StaggeredHeading,
+} from "@/components/helpers/word-curtain";
 import Link from "next/link";
 
 type ImageProps = {

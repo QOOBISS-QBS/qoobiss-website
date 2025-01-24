@@ -1,6 +1,8 @@
 "use client";
 
-import AnimateHeading, { StaggeredHeading } from "@/components/ui/word-curtain";
+import AnimateHeading, {
+  StaggeredHeading,
+} from "@/components/helpers/word-curtain";
 
 type Props = {
   heading: string;

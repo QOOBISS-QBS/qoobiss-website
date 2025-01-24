@@ -4,7 +4,7 @@
 import clsx from "clsx";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import Link from "next/link";
-import AnimateHeading from "@/components/ui/word-curtain";
+import AnimateHeading from "@/components/helpers/word-curtain";
 
 type Props = {
   title: string;
