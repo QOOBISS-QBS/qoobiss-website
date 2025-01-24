@@ -80,5 +80,9 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem("aboutUsTeam").title("Team Section"),
             ])
         ),
+      S.documentTypeListItem("securityAndCompliance").title(
+        "Security and Compliance"
+      ),
+      S.documentTypeListItem("partnerWithUs").title("Partner With Us"),
       S.documentTypeListItem("footer").title("Footer"),
     ]);

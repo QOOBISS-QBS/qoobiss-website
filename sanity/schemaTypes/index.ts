@@ -8,6 +8,7 @@ import { lightFeatureType } from "./light-feature";
 import { faqType } from "./faq";
 import { footerType } from "./footerType";
 import getInTouch from "./getInTouch";
+import partnerWithUs from "./partnerWithUs";
 import { productsType } from "./products/productsType";
 import { originType } from "./products/originType";
 import { originFeaturesType } from "./products/originFeaturesType";
@@ -19,6 +20,7 @@ import { heroType } from "./about-us/heroType";
 import { featureOneType } from "./about-us/featureOneType";
 import { featureTwoType } from "./about-us/featureTwoType";
 import { teamType } from "./about-us/teamType";
+import { securityAndComplianceType } from "./security-and-compliance/securityAndComplianceType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -41,5 +43,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featureOneType,
     featureTwoType,
     teamType,
+    securityAndComplianceType,
+    partnerWithUs,
   ],
 };
