@@ -7,6 +7,7 @@ import { darkFeatureType } from "./dark-feature";
 import { lightFeatureType } from "./light-feature";
 import { faqType } from "./faq";
 import { footerType } from "./footerType";
+import { productsType } from "./products/productsType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     lightFeatureType,
     faqType,
     footerType,
+    productsType,
   ],
 };

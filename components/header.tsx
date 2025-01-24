@@ -2,7 +2,7 @@
 // components/header.tsx
 "use client";
 import clsx from "clsx";
-import { StaggeredHeading } from "./ui/word-curtain";
+import { StaggeredHeading } from "@/components/helpers/word-curtain";
 import { SplineWrapper } from "./helpers/spline-wrapper";
 import { HeaderData, sanitizeHeaderData } from "@/types/header";
 

@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { Plus } from "lucide-react";
-import { StaggeredHeading } from "./ui/word-curtain";
+import { StaggeredHeading } from "@/components/helpers/word-curtain";
 import Link from "next/link";
 import { type FaqData, sanitizeFaqData } from "@/types/faq";
 

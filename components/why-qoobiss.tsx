@@ -1,6 +1,8 @@
 "use client";
 
-import AnimateHeading, { StaggeredHeading } from "./ui/word-curtain";
+import AnimateHeading, {
+  StaggeredHeading,
+} from "@/components/helpers/word-curtain";
 import { WhyQoobissData, sanitizeWhyQoobissData } from "@/types/whyQoobiss";
 
 export type WhyQoobissProps = React.ComponentPropsWithoutRef<"section"> &

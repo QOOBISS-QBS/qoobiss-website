@@ -3,7 +3,9 @@
 
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
-import AnimateHeading, { StaggeredHeading } from "./ui/word-curtain";
+import AnimateHeading, {
+  StaggeredHeading,
+} from "@/components/helpers/word-curtain";
 import Link from "next/link";
 import madeAnimation from "@/animation-data/made.json";
 import instantAnimation from "@/animation-data/instant.json";

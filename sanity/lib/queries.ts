@@ -78,6 +78,25 @@ export const FAQ_QUERY = defineQuery(`*[_type == "faq"][0]{
   }
 }`);
 
+export const PRODUCTS_QUERY = defineQuery(`*[_type == "products"][0]{
+  tagline,
+  heading,
+  description,
+  button{
+    title,
+    variant
+  },
+  products[]{
+    title,
+    description,
+    features[],
+    image{
+      asset->{url},
+      alt
+    }
+  }
+}`);
+
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer"][0]{
   contents[]{
     title,
