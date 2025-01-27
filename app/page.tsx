@@ -13,6 +13,9 @@ import { DarkFeature } from "@/components/dark-feature";
 import { LightFeature } from "@/components/light-feature";
 import { Faq } from "@/components/faq";
 
+import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
+import { GetInTouch } from "@/components/GetInTouch";
+
 export default async function Home() {
   const [
     headerData,
@@ -20,6 +23,7 @@ export default async function Home() {
     darkFeatureData,
     lightFeatureData,
     faqData,
+    getInTouchData,
   ] = await Promise.all([
     sanityFetch({
       query: HEADER_QUERY,
@@ -36,6 +40,9 @@ export default async function Home() {
     sanityFetch({
       query: FAQ_QUERY,
     }),
+    sanityFetch({
+      query: GET_IN_TOUCH_QUERY,
+    }),
   ]);
 
   return (
@@ -45,6 +52,7 @@ export default async function Home() {
       <DarkFeature {...darkFeatureData} />
       <LightFeature {...lightFeatureData} />
       <Faq {...faqData} />
+      <GetInTouch {...getInTouchData} />
     </>
   );
 }

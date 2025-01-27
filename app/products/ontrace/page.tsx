@@ -10,14 +10,18 @@ import {
   ONTRACE_QUERY,
   ONTRACE_FEATURES_QUERY,
 } from "@/sanity/lib/queries/ontrace";
+import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const [ontraceData, ontraceFeaturesData] = await Promise.all([
+  const [ontraceData, ontraceFeaturesData, getInTouchData] = await Promise.all([
     sanityFetch({
       query: ONTRACE_QUERY,
     }),
     sanityFetch({
       query: ONTRACE_FEATURES_QUERY,
+    }),
+    sanityFetch({
+      query: GET_IN_TOUCH_QUERY,
     }),
   ]);
 
@@ -31,7 +35,7 @@ export default async function Home() {
         <DarkFeature {...ontraceFeaturesData.darkFeature} />
       </div>
       <DarkFeature2 {...ontraceFeaturesData.darkFeature2} />
-      <GetInTouch />
+      <GetInTouch {...getInTouchData} />
     </main>
   );
 }

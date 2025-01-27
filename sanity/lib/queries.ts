@@ -1,4 +1,4 @@
-import { defineQuery } from "next-sanity";
+import { defineQuery, groq } from "next-sanity";
 
 export const NAVBAR_QUERY = defineQuery(`*[_type == "navbar"][0]{
   logo{
@@ -77,6 +77,14 @@ export const FAQ_QUERY = defineQuery(`*[_type == "faq"][0]{
     answer
   }
 }`);
+
+export const GET_IN_TOUCH_QUERY = groq`
+  *[_type == "getInTouch"][0] {
+    tag,
+    whiteText,
+    accentText
+  }
+`;
 
 export const PRODUCTS_QUERY = defineQuery(`*[_type == "products"][0]{
   tagline,

@@ -11,10 +11,12 @@ import { useWindowSize } from "react-use";
 import { StaggeredHeading } from "@/components/helpers/word-curtain";
 import Link from "next/link";
 import { GetInTouch } from "./GetInTouch";
+import { sanityFetch } from "@/sanity/lib/client";
+import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
 type InputField = {
   placeholder: string;
-  type?: string;
+  type?: "number" | "search" | "text" | "email" | "password" | "tel";
   name: string;
   required?: boolean;
 };
@@ -59,7 +61,7 @@ type Props = {
 export type PartnerWithUsProps = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
-export const PartnerWithUs = (props: PartnerWithUsProps) => {
+export const PartnerWithUs = async (props: PartnerWithUsProps) => {
   const {
     heading,
     description,
@@ -69,6 +71,12 @@ export const PartnerWithUs = (props: PartnerWithUsProps) => {
     ...PartnerWithUsDefaults,
     ...props,
   } as Props;
+
+  const [getInTouchData] = await Promise.all([
+    sanityFetch({
+      query: GET_IN_TOUCH_QUERY,
+    }),
+  ]);
 
   const form = {
     ...formProps,
@@ -149,7 +157,7 @@ export const PartnerWithUs = (props: PartnerWithUsProps) => {
       setFormData({});
       setAgreedToTerms(false);
       celebrate();
-    } catch (error) {
+    } catch {
       toast({
         variant: "destructive",
         title: "Error",
@@ -252,7 +260,7 @@ export const PartnerWithUs = (props: PartnerWithUsProps) => {
           </form>
         </div>
       </div>
-      <GetInTouch />
+      <GetInTouch {...getInTouchData} />
       <div className="absolute -z-10 inset-0 pointer-events-none size-full lg:block opacity-50 hidden">
         <img
           src="/banner-ellipse.png"

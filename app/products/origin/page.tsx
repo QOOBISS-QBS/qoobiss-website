@@ -10,14 +10,18 @@ import {
   ORIGIN_QUERY,
   ORIGIN_FEATURES_QUERY,
 } from "@/sanity/lib/queries/origin";
+import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const [originData, originFeaturesData] = await Promise.all([
+  const [originData, originFeaturesData, getInTouchData] = await Promise.all([
     sanityFetch({
       query: ORIGIN_QUERY,
     }),
     sanityFetch({
       query: ORIGIN_FEATURES_QUERY,
+    }),
+    sanityFetch({
+      query: GET_IN_TOUCH_QUERY,
     }),
   ]);
 
@@ -31,7 +35,7 @@ export default async function Home() {
         <DarkFeature {...originFeaturesData.darkFeature} />
       </div>
       <DarkFeature2 {...originFeaturesData.darkFeature2} />
-      <GetInTouch />
+      <GetInTouch {...getInTouchData} />
     </main>
   );
 }

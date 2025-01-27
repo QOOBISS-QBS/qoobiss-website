@@ -10,16 +10,21 @@ import {
   OMNICHECK_QUERY,
   OMNICHECK_FEATURES_QUERY,
 } from "@/sanity/lib/queries/omnicheck";
+import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const [omnicheckData, omnicheckFeaturesData] = await Promise.all([
-    sanityFetch({
-      query: OMNICHECK_QUERY,
-    }),
-    sanityFetch({
-      query: OMNICHECK_FEATURES_QUERY,
-    }),
-  ]);
+  const [omnicheckData, omnicheckFeaturesData, getInTouchData] =
+    await Promise.all([
+      sanityFetch({
+        query: OMNICHECK_QUERY,
+      }),
+      sanityFetch({
+        query: OMNICHECK_FEATURES_QUERY,
+      }),
+      sanityFetch({
+        query: GET_IN_TOUCH_QUERY,
+      }),
+    ]);
 
   return (
     <main>
@@ -31,7 +36,7 @@ export default async function Home() {
         <DarkFeature {...omnicheckFeaturesData.darkFeature} />
       </div>
       <DarkFeature2 {...omnicheckFeaturesData.darkFeature2} />
-      <GetInTouch />
+      <GetInTouch {...getInTouchData} />
     </main>
   );
 }
