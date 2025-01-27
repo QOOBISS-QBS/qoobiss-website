@@ -25,6 +25,7 @@ export const structure: StructureResolver = (S) =>
             .title("Products Section")
             .items([
               S.documentTypeListItem("products").title("All Products"),
+              S.documentTypeListItem("aboutUs").title("About Us Section"),
               S.listItem()
                 .title("Origin")
                 .child(

@@ -24,9 +24,11 @@ import { securityAndComplianceType } from "./security-and-compliance/securityAnd
 import { cookiesPolicySchema } from "./cookiesPolicy";
 import { privacyPolicySchema } from "./privacyPolicy";
 import { termsAndConditionsSchema } from "./termsPolicy";
+import aboutUs from "./products/aboutUs";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    aboutUs,
     navbarType,
     headerType,
     whyQoobissType,
