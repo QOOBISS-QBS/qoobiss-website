@@ -87,4 +87,5 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("footer").title("Footer"),
       S.documentTypeListItem("cookiesPolicy").title("Cookies Policy"),
       S.documentTypeListItem("privacyPolicy").title("Privacy Policy"),
+      S.documentTypeListItem("termsPolicy").title("Terms and Conditions"),
     ]);

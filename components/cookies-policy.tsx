@@ -18,7 +18,7 @@ export const CookiesPolicy = async () => {
   const policyData = await client.fetch(COOKIES_POLICY_QUERY);
 
   return (
-    <main>
+    <div>
       <Banner title="Cookies Policy" />
       <article className="prose prose-slate max-w-xxs lg:max-w-7xl mx-auto py-8">
         <div className="mb-8">
@@ -115,6 +115,6 @@ export const CookiesPolicy = async () => {
           ))}
         </div>
       </article>
-    </main>
+    </div>
   );
 };

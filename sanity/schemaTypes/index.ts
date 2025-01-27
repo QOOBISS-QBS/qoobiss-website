@@ -23,6 +23,7 @@ import { teamType } from "./about-us/teamType";
 import { securityAndComplianceType } from "./security-and-compliance/securityAndComplianceType";
 import { cookiesPolicySchema } from "./cookiesPolicy";
 import { privacyPolicySchema } from "./privacyPolicy";
+import { termsAndConditionsSchema } from "./termsPolicy";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -49,5 +50,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     partnerWithUs,
     cookiesPolicySchema,
     privacyPolicySchema,
+    termsAndConditionsSchema,
   ],
 };
