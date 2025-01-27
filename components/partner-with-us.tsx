@@ -14,6 +14,7 @@ import { GetInTouch } from "./GetInTouch";
 import { sanityFetch } from "@/sanity/lib/client";
 import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
+// Types remain the same as in original file
 type InputField = {
   placeholder: string;
   type?: "number" | "search" | "text" | "email" | "password" | "tel";
@@ -56,27 +57,35 @@ type Props = {
     main: ImageConfig;
     background: ImageConfig;
   };
+  getInTouchData?: any; // Add type based on your GetInTouch component props
 };
 
 export type PartnerWithUsProps = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
-export const PartnerWithUs = async (props: PartnerWithUsProps) => {
-  const {
-    heading,
-    description,
-    infoSections,
-    form: formProps,
-  } = {
-    ...PartnerWithUsDefaults,
-    ...props,
-  } as Props;
-
+// Separate data fetching into a new component
+export async function PartnerWithUsWrapper(props: PartnerWithUsProps) {
   const [getInTouchData] = await Promise.all([
     sanityFetch({
       query: GET_IN_TOUCH_QUERY,
     }),
   ]);
+
+  return <PartnerWithUs {...props} getInTouchData={getInTouchData} />;
+}
+
+// Main component (no longer async)
+export const PartnerWithUs = (props: Partial<Props>) => {
+  const {
+    heading,
+    description,
+    infoSections,
+    form: formProps,
+    getInTouchData,
+  } = {
+    ...PartnerWithUsDefaults,
+    ...props,
+  } as Props;
 
   const form = {
     ...formProps,
@@ -124,7 +133,6 @@ export const PartnerWithUs = async (props: PartnerWithUsProps) => {
       className: "bg-white text-light-foreground border-none",
     });
 
-    // Stop confetti after 5 seconds
     setTimeout(() => {
       setShowConfetti(false);
     }, 5000);
@@ -260,7 +268,7 @@ export const PartnerWithUs = async (props: PartnerWithUsProps) => {
           </form>
         </div>
       </div>
-      <GetInTouch {...getInTouchData} />
+      {getInTouchData && <GetInTouch {...getInTouchData} />}
       <div className="absolute -z-10 inset-0 pointer-events-none size-full lg:block opacity-50 hidden">
         <img
           src="/banner-ellipse.png"

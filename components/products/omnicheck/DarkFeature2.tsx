@@ -1,11 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Button, type ButtonProps } from "@/components/ui/button";
 import AnimateHeading, {
   StaggeredHeading,
 } from "@/components/helpers/word-curtain";
-import Link from "next/link";
 
 type ImageProps = {
   src: string;
@@ -21,8 +19,7 @@ type Feature = {
 type Props = {
   tagline: string;
   heading: string;
-  description: string;
-  button: ButtonProps;
+
   features: Feature[];
   image: ImageProps;
 };
@@ -31,7 +28,7 @@ export type DarkFeature2Props = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
 export const DarkFeature2 = (props: DarkFeature2Props) => {
-  const { tagline, heading, description, button, features } = {
+  const { tagline, heading, features } = {
     ...DarkFeature2Defaults,
     ...props,
   } as Props;
@@ -83,7 +80,6 @@ export const DarkFeature2 = (props: DarkFeature2Props) => {
 export const DarkFeature2Defaults: DarkFeature2Props = {
   tagline: "APPLICABLE USES",
   heading: "Build trust in every industry",
-  description: "",
   features: [
     {
       icon: {
