@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 
+"use client";
+
 import React from "react";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { StaggeredHeading } from "@/components/helpers/word-curtain";

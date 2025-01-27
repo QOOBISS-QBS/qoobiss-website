@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+"use client";
+
 import React from "react";
 import { Banner } from "@/components/Banner";
 import { sanityFetch } from "@/sanity/lib/client";
