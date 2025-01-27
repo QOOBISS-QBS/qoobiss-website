@@ -21,6 +21,7 @@ import { featureOneType } from "./about-us/featureOneType";
 import { featureTwoType } from "./about-us/featureTwoType";
 import { teamType } from "./about-us/teamType";
 import { securityAndComplianceType } from "./security-and-compliance/securityAndComplianceType";
+import { cookiesPolicySchema } from "./cookiesPolicy";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -45,5 +46,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     teamType,
     securityAndComplianceType,
     partnerWithUs,
+    cookiesPolicySchema,
   ],
 };
