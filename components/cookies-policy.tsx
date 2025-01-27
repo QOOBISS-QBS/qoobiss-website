@@ -11,11 +11,15 @@ import {
 } from "@/components/ui/table";
 import { Banner } from "@/components/Banner";
 
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { COOKIES_POLICY_QUERY } from "@/sanity/lib/queries/cookiesPolicy";
 
 export const CookiesPolicy = async () => {
-  const policyData = await client.fetch(COOKIES_POLICY_QUERY);
+  const [policyData] = await Promise.all([
+    sanityFetch({
+      query: COOKIES_POLICY_QUERY,
+    }),
+  ]);
 
   return (
     <div>

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Banner } from "@/components/Banner";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { PRIVACY_POLICY_QUERY } from "@/sanity/lib/queries/privacyPolicy";
 
 const PolicySection = ({ number, title, children }: any) => (
@@ -26,11 +26,11 @@ const BulletList = ({ items }: any) => (
 );
 
 export default async function PrivacyPolicy() {
-  const data = await client.fetch(PRIVACY_POLICY_QUERY);
-
-  if (!data) {
-    return null;
-  }
+  const [data] = await Promise.all([
+    sanityFetch({
+      query: PRIVACY_POLICY_QUERY,
+    }),
+  ]);
 
   return (
     <div>

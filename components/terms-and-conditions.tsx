@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Banner } from "@/components/Banner";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { TERMS_POLICY_QUERY } from "@/sanity/lib/queries/termsPolicy";
 
 const PolicySection = ({ number, title, children }: any) => (
@@ -26,11 +26,11 @@ const BulletList = ({ items }: any) => (
 );
 
 export default async function TermsAndConditions() {
-  const termsData = await client.fetch(TERMS_POLICY_QUERY);
-
-  if (!termsData) {
-    return null;
-  }
+  const [termsData] = await Promise.all([
+    sanityFetch({
+      query: TERMS_POLICY_QUERY,
+    }),
+  ]);
 
   return (
     <div>
