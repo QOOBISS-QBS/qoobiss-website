@@ -3,8 +3,6 @@
 
 import React from "react";
 import { Banner } from "@/components/Banner";
-import { sanityFetch } from "@/sanity/lib/client";
-import { TERMS_POLICY_QUERY } from "@/sanity/lib/queries/termsPolicy";
 
 const PolicySection = ({ number, title, children }: any) => (
   <section className="mb-8">
@@ -27,13 +25,7 @@ const BulletList = ({ items }: any) => (
   </ul>
 );
 
-export default async function TermsAndConditions() {
-  const [termsData] = await Promise.all([
-    sanityFetch({
-      query: TERMS_POLICY_QUERY,
-    }),
-  ]);
-
+export default async function TermsAndConditions({ termsData }: any) {
   return (
     <div>
       <Banner title="Terms and Conditions" />

@@ -7,8 +7,6 @@ import React from "react";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { StaggeredHeading } from "@/components/helpers/word-curtain";
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/client";
-import { ABOUT_US_QUERY } from "@/sanity/lib/queries/aboutUs";
 import { urlFor } from "@/sanity/lib/image";
 
 type Image = {
@@ -33,17 +31,10 @@ type Props = {
 export type AboutUsProps = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
-export const AboutUs = async (props: AboutUsProps) => {
+export const AboutUs = async ({ aboutUsData }: any) => {
   const defaultData = {
     ...AboutUsDefaults,
-    ...props,
   } as Props;
-
-  const [aboutUsData] = await Promise.all([
-    sanityFetch({
-      query: ABOUT_US_QUERY,
-    }),
-  ]);
 
   const {
     tagline: sanityTagline,
@@ -62,9 +53,12 @@ export const AboutUs = async (props: AboutUsProps) => {
   };
 
   // Handle image URL safely
-  const imageUrl = image && urlFor(image).url();
+  const imageUrl =
+    image && typeof image === "object" && "asset" in image
+      ? urlFor(image).url()
+      : null;
   const fallbackImageUrl = defaultData.image.src;
-  const displayImageUrl = imageUrl || fallbackImageUrl;
+  const displayImageUrl = imageUrl || image?.src || fallbackImageUrl;
   const imageAlt =
     (image && image.alt) || defaultData.image.alt || "About Us Image";
 

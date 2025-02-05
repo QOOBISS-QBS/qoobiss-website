@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import React, { useState, useMemo } from "react";
 import { useFormspark } from "@formspark/use-formspark";
 import { Button } from "./ui/button";
@@ -12,11 +11,8 @@ import ReactConfetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { StaggeredHeading } from "@/components/helpers/word-curtain";
 import Link from "next/link";
-import { GetInTouch } from "./GetInTouch";
-import { sanityFetch } from "@/sanity/lib/client";
-import { GET_IN_TOUCH_QUERY } from "@/sanity/lib/queries";
 
-// Types remain the same as in original file
+// Types
 type InputField = {
   placeholder: string;
   type?: "number" | "search" | "text" | "email" | "password" | "tel";
@@ -59,31 +55,17 @@ type Props = {
     main: ImageConfig;
     background: ImageConfig;
   };
-  getInTouchData?: any; // Add type based on your GetInTouch component props
 };
 
 export type PartnerWithUsProps = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
-// Separate data fetching into a new component
-export async function PartnerWithUsWrapper(props: PartnerWithUsProps) {
-  const [getInTouchData] = await Promise.all([
-    sanityFetch({
-      query: GET_IN_TOUCH_QUERY,
-    }),
-  ]);
-
-  return <PartnerWithUs {...props} getInTouchData={getInTouchData} />;
-}
-
-// Main component (no longer async)
-export const PartnerWithUs = (props: Partial<Props>) => {
+export const PartnerWithUs = (props: PartnerWithUsProps) => {
   const {
     heading,
     description,
     infoSections,
     form: formProps,
-    getInTouchData,
   } = {
     ...PartnerWithUsDefaults,
     ...props,
@@ -270,7 +252,6 @@ export const PartnerWithUs = (props: Partial<Props>) => {
           </form>
         </div>
       </div>
-      {getInTouchData && <GetInTouch {...getInTouchData} />}
       <div className="absolute -z-10 inset-0 pointer-events-none size-full lg:block opacity-50 hidden">
         <img
           src="/banner-ellipse.png"

@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <div>
-      <CookiesPolicy {...policyData} />
+      <CookiesPolicy policyData={policyData} />
     </div>
   );
 }

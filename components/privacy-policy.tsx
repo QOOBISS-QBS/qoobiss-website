@@ -4,8 +4,6 @@
 
 import React from "react";
 import { Banner } from "@/components/Banner";
-import { sanityFetch } from "@/sanity/lib/client";
-import { PRIVACY_POLICY_QUERY } from "@/sanity/lib/queries/privacyPolicy";
 
 const PolicySection = ({ number, title, children }: any) => (
   <section className="mb-8">
@@ -28,13 +26,7 @@ const BulletList = ({ items }: any) => (
   </ul>
 );
 
-export default async function PrivacyPolicy() {
-  const [data] = await Promise.all([
-    sanityFetch({
-      query: PRIVACY_POLICY_QUERY,
-    }),
-  ]);
-
+export default async function PrivacyPolicy({ data }: any) {
   return (
     <div>
       <Banner title="Privacy Policy" />
