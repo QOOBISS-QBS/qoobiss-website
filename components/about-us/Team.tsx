@@ -4,8 +4,9 @@
 import { StaggeredHeading } from "@/components/helpers/word-curtain";
 
 type ImageProps = {
-  src: string;
-  alt?: string;
+  asset: {
+    url: string;
+  };
 };
 
 type TeamMember = {
@@ -48,8 +49,8 @@ export const Team = (props: TeamProps) => {
             <div key={index}>
               <div className="size-full">
                 <img
-                  src={member.image.src}
-                  alt={member.image.alt}
+                  src={member.image?.asset?.url || "/user.png"}
+                  alt={member.name}
                   className="size-full object-cover rounded-t-2xl aspect-square"
                 />
               </div>
@@ -75,8 +76,9 @@ export const TeamDefaults: TeamProps = {
   teamMembers: [
     {
       image: {
-        src: "/andrei-buzgan.jpg",
-        alt: "Andrei Buzgan",
+        asset: {
+          url: "/andrei-buzgan.jpg",
+        },
       },
       name: "Andrei Buzgan",
       jobTitle: "CEO",
@@ -85,8 +87,9 @@ export const TeamDefaults: TeamProps = {
     },
     {
       image: {
-        src: "/alexandru-rizea.jpg",
-        alt: "Alexandru Rizea",
+        asset: {
+          url: "/alexandru-rizea.jpg",
+        },
       },
       name: "Alexandru Rizea",
       jobTitle: "CTO",
@@ -95,8 +98,9 @@ export const TeamDefaults: TeamProps = {
     },
     {
       image: {
-        src: "/adrian-golomoz.jpg",
-        alt: "Adrian Golomoz",
+        asset: {
+          url: "/adrian-golomoz.jpg",
+        },
       },
       name: "Adrian Golomoz",
       jobTitle: "CFO",
@@ -105,8 +109,9 @@ export const TeamDefaults: TeamProps = {
     },
     {
       image: {
-        src: "/ramona-maria.jpg",
-        alt: "Ramona Maria Voiculescu",
+        asset: {
+          url: "/ramona-maria.jpg",
+        },
       },
       name: "Ramona Maria Voiculescu",
       jobTitle: "Business Development Manager",

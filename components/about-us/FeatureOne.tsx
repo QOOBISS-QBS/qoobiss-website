@@ -1,21 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { StaggeredHeading } from "@/components/helpers/word-curtain";
+import React from "react";
 
-type Image = {
-  src: string;
-  alt?: string;
+type ImageProps = {
+  asset: {
+    url: string;
+  };
 };
 
 type Props = {
   tagline: string;
   heading: string;
   children: React.ReactNode;
-  image: Image;
-  imageMobile: Image;
+  image: ImageProps;
+  imageMobile: ImageProps;
 };
 
 export type FeatureOneProps = React.ComponentPropsWithoutRef<"section"> &
@@ -33,13 +33,13 @@ export const FeatureOne = (props: FeatureOneProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-center lg:justify-between lg:gap-20">
           <div className="py-20 lg:py-0">
             <img
-              src={image.src}
-              alt={image.alt || ""}
+              src={image?.asset?.url || "/aboutus-image.png"}
+              alt="About Us Feature"
               className="lg:block hidden size-full"
             />
             <img
-              src={imageMobile.src}
-              alt={imageMobile.alt || ""}
+              src={imageMobile?.asset?.url || "/aboutus-image-mobile.png"}
+              alt="About Us Feature Mobile"
               className="lg:hidden size-full"
             />
           </div>
@@ -73,11 +73,15 @@ export const FeatureOneDefaults: FeatureOneProps = {
     </React.Fragment>
   ),
   image: {
-    src: "/q-image.png",
-    alt: "About Us image",
+    asset: {
+      url: "/q-image.png",
+    },
   },
   imageMobile: {
-    src: "/q-image.png",
-    alt: "About Us image",
+    asset: {
+      url: "/q-image.png",
+    },
   },
 };
+
+FeatureOne.displayName = "FeatureOne";
