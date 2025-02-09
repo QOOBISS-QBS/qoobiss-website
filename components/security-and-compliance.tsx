@@ -71,8 +71,8 @@ export const SecurityAndCompliance = (props: SecurityAndComplianceProps) => {
             {heading}
           </StaggeredHeading>
           <div className="grid w-full auto-cols-fr grid-cols-1 gap-y-5 lg:grid-cols-3 lg:gap-5">
-            {certifications.map((cert) => (
-              <Dialog key={cert.id}>
+            {certifications.map((cert, index) => (
+              <Dialog key={index}>
                 <DialogTrigger asChild>
                   <Card className="flex flex-col justify-between cursor-pointer hover:shadow-lg transition-shadow">
                     <CardHeader className="flex-1">
