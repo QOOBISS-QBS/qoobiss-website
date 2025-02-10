@@ -85,6 +85,7 @@ export const structure: StructureResolver = (S) =>
         "Security and Compliance"
       ),
       S.documentTypeListItem("partnerWithUs").title("Partner With Us"),
+      S.documentTypeListItem("news").title("News"),
       S.documentTypeListItem("footer").title("Footer"),
       S.documentTypeListItem("cookiesPolicy").title("Cookies Policy"),
       S.documentTypeListItem("privacyPolicy").title("Privacy Policy"),

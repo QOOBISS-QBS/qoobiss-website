@@ -25,6 +25,7 @@ import { cookiesPolicySchema } from "./cookiesPolicy";
 import { privacyPolicySchema } from "./privacyPolicy";
 import { termsAndConditionsSchema } from "./termsPolicy";
 import aboutUs from "./products/aboutUs";
+import news from "./news";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -53,5 +54,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     cookiesPolicySchema,
     privacyPolicySchema,
     termsAndConditionsSchema,
+    news,
   ],
 };
