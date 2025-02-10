@@ -81,13 +81,13 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem("aboutUsTeam").title("Team Section"),
             ])
         ),
+      S.documentTypeListItem("news").title("News"),
       S.documentTypeListItem("securityAndCompliance").title(
         "Security and Compliance"
       ),
       S.documentTypeListItem("partnerWithUs").title("Partner With Us"),
-      S.documentTypeListItem("news").title("News"),
-      S.documentTypeListItem("footer").title("Footer"),
       S.documentTypeListItem("cookiesPolicy").title("Cookies Policy"),
       S.documentTypeListItem("privacyPolicy").title("Privacy Policy"),
       S.documentTypeListItem("termsPolicy").title("Terms and Conditions"),
+      S.documentTypeListItem("footer").title("Footer"),
     ]);
