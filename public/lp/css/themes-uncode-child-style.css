@@ -1,0 +1,31 @@
+/*
+Theme Name: Uncode Child
+Description: Child theme for Uncode theme
+Author: Undsgn™
+Author URI: http://www.undsgn.com
+Template: uncode
+Version: 1.0.0
+Text Domain: uncode
+*/
+
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../fonts/sora-variablefont_wght-webfont.woff2') format('woff2'),
+         url('../fonts/sora-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('../fonts/figtree-variablefont_wght-webfont.woff2') format('woff2'),
+         url('../fonts/figtree-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

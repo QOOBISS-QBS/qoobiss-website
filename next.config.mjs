@@ -11,6 +11,14 @@ const nextConfig = {
   experimental: {
     taint: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/lp",
+        destination: "/lp/index.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
