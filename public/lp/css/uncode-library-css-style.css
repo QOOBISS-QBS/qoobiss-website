@@ -21631,7 +21631,7 @@ body:not(.single-product) .header-wrapper .owl-stage-outer {
 #page-header .header-wrapper > .header-bg-wrapper,
 #page-header .header-wrapper .header-scrolldown,
 #page-header .header-wrapper .row-container:not([data-revealed]) > .row-background {
-  opacity: 0;
+  /* opacity: 0; */
   transition: opacity 0.5s;
   transition-delay: 0.2s;
 }
