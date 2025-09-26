@@ -48,6 +48,43 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      return (
+  <html lang="en">
+    <head>
+      {/* Google Analytics */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-5C02JZSJ6F"
+      />
+      <Script id="ga-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-5C02JZSJ6F');
+        `}
+      </Script>
+    </head>
+    <body
+      className={cn("font-sans antialiased", sora.className, sora.variable)}
+    >
+      <Script
+        id="vtag-ai-js"
+        src="https://r2.leadsy.ai/tag.js"
+        strategy="afterInteractive"
+        data-pid="11TQFqXWgKbk0tsqF"
+        data-version="062024"
+      />
+      <main>
+        <Navbar {...navbarData} />
+        {children}
+        <Footer {...footerData} />
+      </main>
+      {isDraftMode.isEnabled && <VisualEditing />}
+    </body>
+  </html>
+)
+
       <body
         className={cn("font-sans antialiased", sora.className, sora.variable)}
       >
